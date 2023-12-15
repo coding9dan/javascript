@@ -1,0 +1,62 @@
+<!--
+  Create a visual model for explaining list insertion. The model must consist of three elements:
+    - List display section: the section on the page where the list will displayed
+    - text field: a field to provide input for inserting a new element into the list
+    - Button (named "Insert"): clicking this button inserts a new element at the end of the existing list using the value provided in the text field
+
+  2 more -
+    - no element should be inserted if the text field is empty
+    - every third element in the list must be displayed in red and the remainging elements in black
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>List Insertion Visualization</title>
+    <style>
+      .third {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div>
+        <input type="text" id="input" />
+        <button id="button">Insert</button>
+      </div>
+      <div>
+        <ul id="list"></ul>
+      </div>
+    </div>
+  </body>
+  <script>
+    const input = document.querySelector("#input");
+    const button = document.querySelector("#button");
+    const list = document.querySelector("#list");
+    let itemCount = 0;
+
+    button.addEventListener("click", () => {
+      const inputVal = input.value;
+      if (!inputVal) {
+        return;
+      }
+
+      const newItem = document.createElement("li");
+      newItem.append(inputVal);
+
+      itemCount++;
+      if (itemCount % 3 == 0) {
+        newItem.setAttribute("class", "third");
+        // newItem.style.color = "red";
+      }
+
+      list.append(newItem);
+
+      // reset
+      input.value = "";
+    });
+  </script>
+</html>

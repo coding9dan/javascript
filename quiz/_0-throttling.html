@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Throttling</title>
+  </head>
+  <body>
+    <div>
+      <button class="button">Click Me!</button>
+    </div>
+    <script>
+      // will delay executing a function
+      const throttle = (fn, delay) => {
+        let last = 0;
+        return () => {
+          const now = new Date().getTime();
+          console.log(`${now} - ${last} < ${delay}`);
+          if (now - last < delay) {
+            return;
+          }
+          last = now;
+          return fn();
+        };
+      };
+
+      const button = document.querySelector(".button");
+      button.addEventListener(
+        "click",
+        throttle(() => {
+          console.log("Yup clicked me...");
+        }, 3000)
+      );
+    </script>
+  </body>
+</html>

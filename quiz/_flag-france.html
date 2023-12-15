@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>France Flag</title>
+    <style>
+      body {
+        box-sizing: border-box;
+        margin: 0;
+      }
+
+      .wrap {
+        width: 600px;
+        height: 400px;
+        background-color: white;
+        border: 1px solid black;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .flag {
+        padding: 33.33%;
+        position: relative;
+        background-color: white;
+      }
+
+      .flag::before {
+        content: "";
+        width: 33.33%;
+        height: 100%;
+        background-color: #0055a4;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .flag::after {
+        content: "";
+        width: 33.33%;
+        height: 100%;
+        background-color: #ef4135;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="flag"></div>
+    </div>
+  </body>
+</html>

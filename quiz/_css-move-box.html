@@ -1,0 +1,36 @@
+<style>
+  .box {
+    width: 20px;
+    height: 20px;
+    background-color: aqua;
+    margin: 4px;
+    display: inline-block;
+  }
+
+  .move {
+    transition-duration: 1s;
+    transform: translate(100px);
+  }
+</style>
+
+<body>
+  <h3>Let's move a box!!!</h3>
+  <div class="container">
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+  </div>
+</body>
+
+<script>
+  const animateRight = (el) => {
+    el.classList.add("move");
+  };
+
+  const boxes = document.querySelectorAll(".box");
+  for (let i = 0; i < boxes.length; i++) {
+    setTimeout(() => {
+      animateRight(boxes[i]);
+    }, 500);
+  }
+</script>

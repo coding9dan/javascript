@@ -1,0 +1,89 @@
+<body>
+  <div>
+    <div id="content"></div>
+  </div>
+</body>
+
+<script>
+  const url = "https://coding9dan.github.io/api/users.json";
+
+  // normal fetch
+  {
+    fetch(url)
+      .then((response) => response.json())
+      .then((users) => {
+        const contentHeader = ` --- normal fetch --- `;
+        const content = users
+          .map((user) => {
+            return `<p>Name: ${user.name}</p>`;
+          })
+          .join("");
+
+        document
+          .querySelector("#content")
+          .insertAdjacentHTML("afterbegin", contentHeader + content);
+      })
+      .catch((error) => console.log(error));
+  }
+
+  // using promise
+  {
+    function getUsers(url) {
+      return new Promise((resolve, reject) => {
+        fetch(url)
+          .then((response) => {
+            if (response.ok) {
+              resolve(response.json());
+            } else {
+              reject("There was an error!");
+            }
+          })
+          .catch((error) => console.log(error));
+      });
+    }
+
+    getUsers(url)
+      .then((users) => {
+        const contentHeader = ` --- promise --- `;
+        const content = users
+          .map((user) => {
+            return `<p>Name: ${user.name}</p>`;
+          })
+          .join("");
+        document
+          .querySelector("#content")
+          .insertAdjacentHTML("afterbegin", contentHeader + content);
+      })
+      .catch((error) => console.log(error));
+  }
+
+  // async/await
+  {
+    async function getUsersAsync(url) {
+      try {
+        const response = await fetch(url);
+        return await response.json();
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    async function renderUserAsync(url) {
+      try {
+        const users = await getUsers(url);
+        const contentHeader = ` --- async/await --- `;
+        const content = users
+          .map((user) => {
+            return `<p>Name: ${user.name}</p>`;
+          })
+          .join("");
+        document
+          .querySelector("#content")
+          .insertAdjacentHTML("afterbegin", contentHeader + content);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    renderUserAsync(url);
+  }
+</script>

@@ -1,0 +1,105 @@
+<!-- Fetch user information from https://randomuser.me/api/
+
+Display user’s title, first and last name along with their image thumbnail. Center the name and make it bold. Make the image have rounded corners.
+
+Create a “Contact Info” button that would display user’s email and mailing address when clicked.
+
+Create next user button and fetch another user with the same endpoint.
+
+Display the amount of users fetched. (Such as “you have seen {x} users.”).
+
+For styling, make the buttons transparent background with an outline border and text. When the mouse overs, make transparent background the same color as the text and make the text white. -->
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>BabyCenter -- Frontend Challenge</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .user-image {
+        border-radius: 10%;
+      }
+      .container {
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="content"></div>
+    </div>
+    <div>
+      <button type="button" id="button">Contact Info</button>
+      <div id="info"></div>
+    </div>
+    <div>
+      <button type="button" id="bttn-next">Next User</button>
+      <div id="next-"></div>
+    </div>
+  </body>
+
+  <script>
+    const url = "https://randomuser.me/api/";
+
+    function getUsers(url) {
+      return new Promise((resolve, reject) => {
+        fetch(url)
+          .then((response) => {
+            if (response.ok) {
+              resolve(response.json());
+            } else {
+              reject("There was an error");
+            }
+          })
+          .catch((error) => console.log(error));
+      });
+    }
+
+    getUsers(url).then((data) => {
+      console.log(data.results);
+      const content = data.results
+        .map((user) => {
+          const button = document.querySelector("#button");
+          const userInfo = document.querySelector("#info");
+
+          return `<p>Title: ${user.name.title}</p>
+                  <p>First Name: ${user.name.first}</p>
+                  <p>Last Name: ${user.name.last}</p>
+                  <p><img class="user-image" src=${user.picture.large} alt="Image" /></p>`;
+        })
+        .join("");
+
+      button.addEventListener("click", () => {
+        const info = data.results
+          .map((user) => {
+            return `<p>Email: ${user.email}</p>
+                  <p>Mailing: ${user.location.street.name}</p>
+          `;
+          })
+          .join("");
+        document.querySelector("#info").insertAdjacentHTML("afterbegin", info);
+      });
+
+      document
+        .querySelector("#content")
+        .insertAdjacentHTML("afterbegin", content);
+    });
+
+    //     button.addEventListener("click", () => {
+    //       getUsers(url)
+    //       .then(data => {
+    //         console.log(data.results)
+    //         const content = data.results.map(user => {
+    //           return `<p>Email: ${user.email}</p>
+    //                   <p>Mailing: ${user.location.street.name}</p>
+    //           `
+    //         }).join("")
+
+    //           document.querySelector("#info").insertAdjacentHTML("afterbegin", content)
+    //       })
+    //     })
+  </script>
+</html>

@@ -1,0 +1,60 @@
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .flag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 400px;
+  }
+</style>
+
+<body>
+  <div class="flag"></div>
+</body>
+
+<script>
+  function createMainDiv() {
+    const flagDiv = document.querySelector(".flag");
+    for (let i = 0; i < 3; i++) {
+      let newDiv = document.createElement("div");
+      newDiv.classList.add("ele");
+      flagDiv.appendChild(newDiv);
+    }
+  }
+
+  function createMainFlag() {
+    const ele = document.querySelectorAll(".ele");
+    for (let i = 0; i < ele.length; i++) {
+      ele[i].id = "col_" + i;
+      ele[i].setAttribute("style", "width: 33.33%; height: 100%");
+
+      if (i === 0) ele[i].style.background = "blue";
+      else if (i === 1) ele[i].style.background = "white";
+      else if (i === 2) ele[i].style.background = "red";
+
+      ele[i].addEventListener("click", () => {
+        ele[i].style.background =
+          "#" + Math.floor(Math.random() * 899999 + 100000);
+      });
+    }
+  }
+
+  async function callEachCol() {
+    const first = await createMainDiv();
+    const second = await createMainFlag();
+  }
+
+  callEachCol();
+</script>
