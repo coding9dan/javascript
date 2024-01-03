@@ -17,21 +17,13 @@ Output: ["1","2","Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz","11","Fizz","13"
 */
 
 {
-  let arr = [];
   const answer = (num) => {
+    const arr = [];
     for (i = 1; i <= num; i++) {
-      const divBy3 = i % 3 == 0;
-      const divBy5 = i % 5 == 0;
-
-      if (divBy3 && divBy5) {
-        arr.push("FizzBuzz");
-      } else if (divBy3) {
-        arr.push("Fizz");
-      } else if (divBy5) {
-        arr.push("Buzz");
-      } else {
-        arr.push(i);
-      }
+      if (i % 15 === 0) arr.push("FizzBuzz");
+      else if (i % 3 === 0) arr.push("Fizz");
+      else if (i % 5 === 0) arr.push("Buzz");
+      else arr.push(i.toString());
     }
 
     return arr;
