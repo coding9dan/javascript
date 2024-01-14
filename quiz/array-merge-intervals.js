@@ -1,7 +1,5 @@
 /*
-
 ref: https://www.youtube.com/watch?v=LvygwImtvEw
-
 */
 {
   function mergeInterval(intervals) {

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <head>
+      <style>
+        body {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        .container {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          height: 100vh;
+        }
+
+        #box1 {
+          background-color: grey;
+        }
+
+        #box2 {
+          background-color: yellow;
+        }
+
+        #box3 {
+          background-color: pink;
+        }
+      </style>
+    </head>
+
+    <div class="container">
+      <div id="box1">
+        Left
+        <div id="box1Val"></div>
+      </div>
+      <div id="box2">
+        Center
+        <div id="box2Val"></div>
+      </div>
+      <div id="box3">
+        Right
+        <div id="box3Val"></div>
+      </div>
+    </div>
+
+    <script>
+      const counterFunc = (e) => {
+        let id = e.target.id;
+        let counter = document.getElementById(id + "Val");
+        counter.innerHTML++;
+      };
+
+      const box1 = document.getElementById("box1");
+      const box2 = document.getElementById("box2");
+      const box3 = document.getElementById("box3");
+
+      document.getElementById("box1Val").innerHTML = 0;
+      document.getElementById("box2Val").innerHTML = 0;
+      document.getElementById("box3Val").innerHTML = 0;
+
+      box1.addEventListener("click", counterFunc);
+      box2.addEventListener("click", counterFunc);
+      box3.addEventListener("click", counterFunc);
+    </script>
+  </body>
+</html>

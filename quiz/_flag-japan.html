@@ -12,7 +12,7 @@
         padding: 0;
       }
 
-      .wrap {
+      /* .wrap {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -36,12 +36,41 @@
         border-radius: 50%;
         top: 20%;
         left: 30%;
+      } */
+
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: aquamarine;
+        height: 100vh;
+      }
+
+      .flag {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 600px;
+        height: 400px;
+        background-color: white;
+      }
+
+      .flag-circle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 250px;
+        height: 250px;
+        background-color: red;
+        border-radius: 50%;
       }
     </style>
   </head>
   <body>
-    <div class="wrap">
-      <div class="flag"></div>
+    <div class="container">
+      <div class="flag">
+        <div class="flag-circle"></div>
+      </div>
     </div>
   </body>
 </html>

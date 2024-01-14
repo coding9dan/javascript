@@ -4,7 +4,6 @@ Given two sorted arrays nums1 and nums2 of size of m and n - return the median o
 Input: nums1 = [1, 3], nums2 = [3]
 Output: 2
 */
-
 {
   function findMedian(nums1, nums2) {
     let temp = [...nums1, ...nums2].sort((a, b) => a - b);

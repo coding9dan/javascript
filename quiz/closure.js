@@ -23,26 +23,39 @@
 //   result();
 // }
 
+// {
+//   const privateCounter = () => {
+//     let count = 0;
+
+//     // closure
+//     return {
+//       increment: (val = 1) => {
+//         count += val;
+//       },
+//       getValue: () => {
+//         return count;
+//       },
+//     };
+//   };
+
+//   const counter = privateCounter();
+
+//   console.log(counter.getValue());
+//   counter.increment();
+//   console.log(counter.getValue());
+//   counter.increment();
+//   console.log(counter.getValue());
+// }
+
 {
-  const privateCounter = () => {
-    let count = 0;
-
-    // closure
-    return {
-      increment: (val = 1) => {
-        count += val;
-      },
-      getValue: () => {
-        return count;
-      },
+  function outer(num1) {
+    const a = 5;
+    const inner = (num2) => {
+      return a * num2 + num1;
     };
-  };
+    return inner;
+  }
 
-  const counter = privateCounter();
-
-  console.log(counter.getValue());
-  counter.increment();
-  console.log(counter.getValue());
-  counter.increment();
-  console.log(counter.getValue());
+  const val = outer(3);
+  console.log(val(2));
 }

@@ -22,5 +22,4 @@ cities.forEach((city) => {
 
   return [result, total];
 });
-
 console.log(result, total);
