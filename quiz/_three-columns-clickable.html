@@ -9,67 +9,68 @@ background color.
 <!DOCTYPE html>
 <html>
   <body>
-    <head>
-      <style>
-        body {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-        }
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        .container {
-          display: grid;
-          grid-template-columns: 1fr 1fr 1fr;
-          height: 100vh;
-        }
+      .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        height: 100vh;
+      }
 
-        #box1 {
-          background-color: grey;
-        }
+      .box1 {
+        background-color: pink;
+        display: flex;
+        justify-content: center;
+      }
 
-        #box2 {
-          background-color: yellow;
-        }
+      .box2 {
+        background-color: greenyellow;
+        display: flex;
+        justify-content: center;
+      }
 
-        #box3 {
-          background-color: pink;
-        }
-      </style>
-    </head>
+      .box3 {
+        background-color: yellow;
+        display: flex;
+        justify-content: center;
+      }
 
+      .countVal {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+    </style>
     <div class="container">
-      <div id="box1">
-        Left
-        <div id="box1Val"></div>
+      <div class="box1" id="box1">
+        left <span class="countVal" id="box1Val"></span>
       </div>
-      <div id="box2">
-        Center
-        <div id="box2Val"></div>
+      <div class="box2" id="box2">
+        center <span class="countVal" id="box2Val"></span>
       </div>
-      <div id="box3">
-        Right
-        <div id="box3Val"></div>
+      <div class="box3" id="box3">
+        right <span class="countVal" id="box3Val"></span>
       </div>
     </div>
 
     <script>
-      const counterFunc = (e) => {
+      const counter = (e) => {
         let id = e.target.id;
         let counter = document.getElementById(id + "Val");
         counter.innerHTML++;
       };
-
       const box1 = document.getElementById("box1");
       const box2 = document.getElementById("box2");
       const box3 = document.getElementById("box3");
 
-      document.getElementById("box1Val").innerHTML = 0;
-      document.getElementById("box2Val").innerHTML = 0;
-      document.getElementById("box3Val").innerHTML = 0;
-
-      box1.addEventListener("click", counterFunc);
-      box2.addEventListener("click", counterFunc);
-      box3.addEventListener("click", counterFunc);
+      box1.addEventListener("click", counter);
+      box2.addEventListener("click", counter);
+      box3.addEventListener("click", counter);
     </script>
   </body>
 </html>
