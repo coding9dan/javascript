@@ -4,6 +4,7 @@ ref: https://www.youtube.com/watch?v=LvygwImtvEw
 {
   function mergeInterval(intervals) {
     intervals.sort((a, b) => a[0] - b[0]);
+    // console.log(intervals.sort((a, b) => a[0] - b[0]));
     const result = [intervals[0]];
 
     for (let interval of intervals) {

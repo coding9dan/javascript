@@ -19,9 +19,10 @@
           if (timeOutId) {
             clearTimeout(timeOutId);
           }
-          timeOutId = setTimeout(() => {
-            fn();
-          }, delay);
+          // timeOutId = setTimeout(() => {
+          //   fn();
+          // }, delay);
+          timeOutId = setTimeout(fn, delay);
         };
       };
 

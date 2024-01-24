@@ -5,6 +5,7 @@
   const getFetchUrl = async (url) => {
     const res = await fetch(url);
     const results = await res.text();
+    // console.log(results);
 
     return results.split("\n").reduce((accUrl, curUrl) => {
       let maxCount = 0;
