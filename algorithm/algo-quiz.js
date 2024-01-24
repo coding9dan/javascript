@@ -113,4 +113,21 @@
 
 // write unit test
 {
+  const add = function (a, b) {
+    return a + b;
+  };
+
+  const unitTest = {};
+  unitTest.testAdd = function (method) {
+    return false;
+  };
+  console.log(add(3, 4));
+  console.log(unitTest.testAdd(add));
+}
+
+// invert binary tree
+{
+  var invertTree = function (root) {
+    return root;
+  };
 }
